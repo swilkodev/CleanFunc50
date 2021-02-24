@@ -19,7 +19,7 @@ This is a solution which uses the Clean Architecture templates to demonstrate ho
 2. Install the latest [Azure Function Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools)
 3. Open the solution in Visual Studio or Visual Studio Code (Preferred)
 4. Press F5 and the function app should start
-5. For Visual Studio Code, Locate **TodosTesting.http** file and execute API calls with REST Client
+5. For Visual Studio Code, Locate **FunctionApp/TodosTesting.http** file and execute API calls with REST Client extension
 
 Check out Jason Taylor's [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information on getting started
 with clean architecture and using the original template.

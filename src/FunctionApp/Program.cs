@@ -20,6 +20,7 @@ namespace FunctionApp
                 .ConfigureAppConfiguration(c =>
                 {
                     c.AddCommandLine(args);
+                    c.AddJsonFile("appsettings.json", true);
                     c.AddJsonFile("local.settings.json", true);
                 })
                 .ConfigureFunctionsWorker((c, b) =>

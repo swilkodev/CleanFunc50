@@ -1,0 +1,15 @@
+Note: Requires REST Client for VSCode
+
+###
+GET http://localhost:7071/api/todolists
+
+###
+GET http://localhost:7071/api/todolists/export/1
+
+###
+POST http://localhost:7071/api/todolists
+Content-Type: application/json
+
+{
+    "title": "My Todo List"
+}

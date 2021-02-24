@@ -1,0 +1,11 @@
+{
+  "Values": {
+    "ServiceBusConnectionString": "Endpoint=sb://sw-demo-messaging.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=UWo0a4hobIxWtm4Cdc17J+Xso952IWjxR5Md59QHO6g=",
+    "UseInMemoryDatabase": true,
+    "CosmosDBEndpoint": "https://localhost:8081",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "CosmosDBAccountKey": "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+  },
+  "IsEncrypted": false
+}

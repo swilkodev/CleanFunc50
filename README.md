@@ -16,11 +16,12 @@ This is a solution which uses the Clean Architecture templates to demonstrate ho
 ## Getting Started
 
 1. Install the latest [.NET 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
-2. Install the latest Azure Function 3.0 Runtime
+2. Install the latest [Azure Function Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools)
 3. Open the solution in Visual Studio or Visual Studio Code (Preferred)
 4. Press F5 and the function app should start
 
-Check out Jason Taylor's [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information on using the original template.
+Check out Jason Taylor's [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information on getting started
+with clean architecture and using the original template.
 
 ### Docker Configuration
 TBA

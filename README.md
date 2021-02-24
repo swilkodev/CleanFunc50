@@ -20,7 +20,7 @@ This is a solution which uses the Clean Architecture templates to demonstrate ho
 3. Open the solution in Visual Studio or Visual Studio Code (Preferred)
 4. Press F5 and the function app should start
 
-Check out Jason Taylor's blog [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information on using the original template.
+Check out Jason Taylor's [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information on using the original template.
 
 ### Docker Configuration
 TBA
@@ -29,7 +29,7 @@ TBA
 
 The template is configured to use an in-memory database by default. This ensures that all users will be able to run the solution without needing to set up additional infrastructure (e.g. SQL Server).
 
-If you would like to use SQL Server, you will need to update **WebUI/appsettings.json** as follows:
+If you would like to use SQL Server, you will need to update **FunctionApp/appsettings.json** as follows:
 
 ```json
   "UseInMemoryDatabase": false,
@@ -49,7 +49,7 @@ To use `dotnet-ef` for your migrations please add the following flags to your co
 
 For example, to add a new migration from the root folder:
 
- `dotnet ef migrations add "SampleMigration" --project src\Infrastructure --startup-project src\WebUI --output-dir Persistence\Migrations`
+ `dotnet ef migrations add "SampleMigration" --project src\Infrastructure --startup-project src\FunctionApp --output-dir Persistence\Migrations`
 
 ## Overview
 

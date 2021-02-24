@@ -14,7 +14,7 @@ namespace CleanArchitecture.FunctionApp
                                                                                 Func<TResponse, HttpResponseData> resultMethod = null)
                                                                                 where TRequest : IRequest<TResponse>;
 
-        Task<TResponse> ExecuteAsync2<TRequest, TResponse>(FunctionExecutionContext executionContext, 
+        Task<TResponse> ExecuteAsync<TRequest, TResponse>(FunctionExecutionContext executionContext, 
                                                                                 HttpRequestData httpRequest,
                                                                                 TRequest request)
                                                                                 where TRequest : IRequest<TResponse>;

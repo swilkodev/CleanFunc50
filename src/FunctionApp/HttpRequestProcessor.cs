@@ -18,12 +18,15 @@ namespace CleanArchitecture.FunctionApp
         public async Task<HttpResponseData> ExecuteAsync<TRequest, TResponse>(FunctionExecutionContext executionContext, HttpRequestData httpRequest, TRequest request, Func<TResponse, HttpResponseData> resultMethod = null)
             where TRequest : IRequest<TResponse>
         {
+            // TODO 
+            // Add logic to extract info from HttpRequestData
+            // Add logic to return problemdetails structures on any exception
             var response = await mediator.Send(request);
 
             return resultMethod(response);
         }
 
-        public async Task<TResponse> ExecuteAsync2<TRequest, TResponse>(FunctionExecutionContext executionContext, HttpRequestData httpRequest, TRequest request) where TRequest : IRequest<TResponse>
+        public async Task<TResponse> ExecuteAsync<TRequest, TResponse>(FunctionExecutionContext executionContext, HttpRequestData httpRequest, TRequest request) where TRequest : IRequest<TResponse>
         {
             return await mediator.Send(request);
         }

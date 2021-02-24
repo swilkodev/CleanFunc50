@@ -34,7 +34,7 @@ namespace CleanArchitecture.FunctionApp
             var logger = executionContext.Logger;
             logger.LogInformation("Called GetTodos");
 
-            return await this.processor.ExecuteAsync2<GetTodosQuery, TodosVm>(executionContext, 
+            return await this.processor.ExecuteAsync<GetTodosQuery, TodosVm>(executionContext, 
                                                                 req, 
                                                                 new GetTodosQuery());
         }

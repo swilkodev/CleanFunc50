@@ -27,7 +27,7 @@ namespace CleanArchitecture.FunctionApp
             var logger = executionContext.Logger;
             logger.LogInformation("Called GetWeatherForecasts");
 
-            return await this.mediator.ExecuteAsync2<GetWeatherForecastsQuery, IEnumerable<WeatherForecast>>(executionContext, 
+            return await this.mediator.ExecuteAsync<GetWeatherForecastsQuery, IEnumerable<WeatherForecast>>(executionContext, 
                                                                 req, 
                                                                 new GetWeatherForecastsQuery());
         }

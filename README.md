@@ -1,7 +1,7 @@
  # Clean Architecture Function App 5.0
 <br/>
 
-This is a solution which uses the Clean Architecture templates to demonstrate how to integrate with Azure Functions. 
+This is a solution which uses the Clean Architecture templates to demonstrate how to integrate with Azure Functions using .NET 5. This is work in progress as the Azure Functions Worker is in preview.
 
 ## Technologies
 
@@ -15,14 +15,12 @@ This is a solution which uses the Clean Architecture templates to demonstrate ho
 
 ## Getting Started
 
-The easiest way to get started is to install the [NuGet package](https://www.nuget.org/packages/Clean.Architecture.Solution.Template) and run `dotnet new ca-sln`:
-
 1. Install the latest [.NET 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
 2. Install the latest Azure Function 3.0 Runtime
 3. Open the solution in Visual Studio or Visual Studio Code (Preferred)
 4. Press F5 and the function app should start
 
-Check out my [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information on using the original template.
+Check out Jason Taylor's blog [blog post](https://jasontaylor.dev/clean-architecture-getting-started/) for more information on using the original template.
 
 ### Docker Configuration
 TBA

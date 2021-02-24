@@ -69,7 +69,7 @@ This layer contains classes for accessing external resources such as file system
 
 ### FunctionApp
 
-This layer is the entrance to the application and utilises the Azure Functions runime. This layer depends on both the Application and Infrastructure layers, however, the dependency on Infrastructure is only to support dependency injection. Therefore only *Startup.cs* should reference Infrastructure.
+This layer is the entrance to the application and utilises the Azure Functions runtime. This layer is designed to be thin veneer within minimal logic and no application concerns. It depends on both the Application and Infrastructure layers, however, the dependency on Infrastructure is only to support dependency injection. Therefore only *Startup.cs* should reference Infrastructure.
 
 ## Support
 

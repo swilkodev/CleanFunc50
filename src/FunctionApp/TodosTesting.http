@@ -1,11 +1,14 @@
 Note: Requires REST Client for VSCode
 
-###
+### Get TodoLists
 GET http://localhost:7071/api/todolists
 
-###
-GET http://localhost:7071/api/todolists/export/1
+### GetTodoList with id 1
+GET http://localhost:7071/api/todolists/1
 
+### GetTodoList with id 1 as a csv output
+GET http://localhost:7071/api/todolists/1
+Content-Type: text/csv
 ###
 POST http://localhost:7071/api/todolists
 Content-Type: application/json
@@ -13,3 +16,22 @@ Content-Type: application/json
 {
     "title": "My Todo List"
 }
+
+###
+POST http://localhost:7071/api/todolists/1/items
+Content-Type: application/json
+
+{
+    "title": "Feed the dog"
+}
+
+###
+PUT http://localhost:7071/api/todolists/1
+Content-Type: application/json
+
+{
+    "title": "My Todo List 2"
+}
+
+###
+DELETE http://localhost:7071/api/todolists/1

@@ -1,13 +1,9 @@
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Pipeline;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace CleanArchitecture.FunctionApp
 {
@@ -20,11 +16,11 @@ namespace CleanArchitecture.FunctionApp
             this.mediator = mediator;
         }
 
-        [FunctionName(nameof(GetWeatherForecasts))]
+        [Function(nameof(GetWeatherForecasts))]
         public async Task<IEnumerable<WeatherForecast>> GetWeatherForecasts([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "weather/forecasts")] HttpRequestData req,
-            FunctionExecutionContext executionContext)
+            FunctionContext executionContext)
         {
-            var logger = executionContext.Logger;
+            var logger = executionContext.GetLogger<WeatherForecastsFunctions>();
             logger.LogInformation("Called GetWeatherForecasts");
 
             return await this.mediator.ExecuteAsync<GetWeatherForecastsQuery, IEnumerable<WeatherForecast>>(executionContext, 

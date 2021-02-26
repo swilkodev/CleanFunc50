@@ -55,7 +55,7 @@ namespace FunctionApp
             return await this.processor.ExecuteAsync<GetTodoItemsWithPaginationQuery, PaginatedList<TodoItemDto>>(functionContext,
                                                                 req,
                                                                 query,
-                                                                async (r) => await req.CreateObjectResponseAsync(r));
+                                                                (r) => req.CreateObjectResponseAsync(r));
         }
 
         [Function(nameof(CreateTodoItem))]

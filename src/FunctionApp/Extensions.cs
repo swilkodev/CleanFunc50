@@ -22,6 +22,11 @@ namespace CleanArchitecture.FunctionApp
             return serializer.Deserialize<T>(reader);
         }
 
+        public static Task<HttpResponseData> CreateResponseAsync(this HttpRequestData request, HttpStatusCode statusCode = HttpStatusCode.OK)
+        {
+            return Task.FromResult(request.CreateResponse(statusCode));
+        }
+
         public async static Task<HttpResponseData> CreateFileContentResponseAsync(this HttpRequestData request, byte[] content, string contentType, string filename)
         {
             var contentDisposition = new Microsoft.Net.Http.Headers.ContentDispositionHeaderValue("attachment");

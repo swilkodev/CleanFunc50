@@ -25,7 +25,7 @@ namespace CleanArchitecture.FunctionApp
         }
 
         [Function(nameof(GetTodos))]
-        public async Task<TodosVm> GetTodos([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todolists")]
+        public async Task<HttpResponseData> GetTodos([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todolists")]
             HttpRequestData req,
             FunctionContext functionContext)
         {
@@ -33,7 +33,8 @@ namespace CleanArchitecture.FunctionApp
 
             return await this.processor.ExecuteAsync<GetTodosQuery, TodosVm>(functionContext,
                                                                 req,
-                                                                new GetTodosQuery());
+                                                                new GetTodosQuery(),
+                                                                (r) => req.CreateObjectResponseAsync(r));
         }
 
         [Function(nameof(CreateTodosList))]
@@ -57,7 +58,7 @@ namespace CleanArchitecture.FunctionApp
         }
 
         [Function(nameof(UpdateTodosList))]
-        public async Task UpdateTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "todolists/{id}")] TodoList todoList,
+        public async Task<HttpResponseData> UpdateTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "todolists/{id}")] TodoList todoList,
             HttpRequestData req,
             int id,
             FunctionContext functionContext)
@@ -70,13 +71,14 @@ namespace CleanArchitecture.FunctionApp
                 Title = todoList.Title
             };
 
-            await this.processor.ExecuteAsync<UpdateTodoListCommand, Unit>(functionContext,
+            return await this.processor.ExecuteAsync<UpdateTodoListCommand, Unit>(functionContext,
                                                                 req,
-                                                                request);
+                                                                request,
+                                                                (r) => req.CreateResponseAsync());
         }
 
         [Function(nameof(DeleteTodosList))]
-        public async Task DeleteTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "todolists/{id}")]
+        public async Task<HttpResponseData> DeleteTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "todolists/{id}")]
             HttpRequestData req,
             int id,
             FunctionContext functionContext)
@@ -88,9 +90,10 @@ namespace CleanArchitecture.FunctionApp
                 Id = id
             };
 
-            await this.processor.ExecuteAsync<DeleteTodoListCommand, Unit>(functionContext,
+            return await this.processor.ExecuteAsync<DeleteTodoListCommand, Unit>(functionContext,
                                                                 req,
-                                                                request);
+                                                                request,
+                                                                (r) => req.CreateResponseAsync(System.Net.HttpStatusCode.NoContent));
         }
     }
 

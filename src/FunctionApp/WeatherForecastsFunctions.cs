@@ -17,7 +17,7 @@ namespace CleanArchitecture.FunctionApp
         }
 
         [Function(nameof(GetWeatherForecasts))]
-        public async Task<IEnumerable<WeatherForecast>> GetWeatherForecasts([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "weather/forecasts")] HttpRequestData req,
+        public async Task<HttpResponseData> GetWeatherForecasts([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "weather/forecasts")] HttpRequestData req,
             FunctionContext executionContext)
         {
             var logger = executionContext.GetLogger<WeatherForecastsFunctions>();
@@ -25,7 +25,8 @@ namespace CleanArchitecture.FunctionApp
 
             return await this.mediator.ExecuteAsync<GetWeatherForecastsQuery, IEnumerable<WeatherForecast>>(executionContext, 
                                                                 req, 
-                                                                new GetWeatherForecastsQuery());
+                                                                new GetWeatherForecastsQuery(),
+                                                                (r) => req.CreateObjectResponseAsync(r));
         }
     }
 }

@@ -39,8 +39,8 @@ namespace CleanArchitecture.FunctionApp
 
         [Function(nameof(CreateTodosList))]
         public async Task<HttpResponseData> CreateTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "todolists")]
-            HttpRequestData req,
             TodoList todoList,
+            HttpRequestData req,
             FunctionContext functionContext)
         {
             logger.LogInformation("Called CreateTodosList");

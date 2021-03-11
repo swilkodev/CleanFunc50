@@ -2,8 +2,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Azure.Functions.Worker.Configuration;
-using FunctionApp.Middleware;
 using CleanArchitecture.Application.Common.Interfaces;
 using CleanArchitecture.FunctionApp;
 
@@ -23,14 +21,9 @@ namespace FunctionApp
                     c.AddJsonFile("appsettings.json", true);
                     c.AddJsonFile("local.settings.json", true);
                 })
-                .ConfigureFunctionsWorker((c, b) =>
-                {
-                    b.UseSampleMiddleware();
-                    b.UseFunctionExecutionMiddleware();
-                })
+                .ConfigureFunctionsWorkerDefaults()
                 .ConfigureServices((c, s) =>
                 {
-                    //s.AddSingleton<IHttpResponderService, DefaultHttpResponderService>();
                     s.AddSingleton<IHttpRequestProcessor, HttpRequestProcessor>();
                     s.AddSingleton<ICurrentUserService, CurrentUserService>();
 

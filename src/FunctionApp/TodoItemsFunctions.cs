@@ -77,7 +77,7 @@ namespace FunctionApp
             return await this.processor.ExecuteAsync<CreateTodoItemCommand, int>(functionContext,
                                                                 req,
                                                                 command,
-                                                                (r) => req.CreateCreatedObjectResponseAsync($"todolists/{id}/items", r));
+                                                                (r) => req.CreateObjectCreatedResponseAsync($"todolists/{id}/items", r));
         }
     }
 }

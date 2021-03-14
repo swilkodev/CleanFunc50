@@ -39,32 +39,32 @@ namespace CleanArchitecture.FunctionApp
 
         [Function(nameof(CreateTodosList))]
         public async Task<HttpResponseData> CreateTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "todolists")]
-            TodoList todoList,
             HttpRequestData req,
             FunctionContext functionContext)
         {
             logger.LogInformation("Called CreateTodosList");
 
+            var todoList = await req.ReadFromJsonAsync<TodoList>();
             var command = new CreateTodoListCommand
             {
-                // TODO Complex types are not set properly by the bindings yet
-                Title = "test123"//todoList.Title
+                Title = todoList.Title
             };
 
             return await this.processor.ExecuteAsync<CreateTodoListCommand, int>(functionContext,
                                                                 req,
                                                                 command,
-                                                                (r) => req.CreateCreatedObjectResponseAsync("todolists", r));
+                                                                (r) => req.CreateObjectCreatedResponseAsync("todolists", r));
         }
 
         [Function(nameof(UpdateTodosList))]
-        public async Task<HttpResponseData> UpdateTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "todolists/{id}")] TodoList todoList,
+        public async Task<HttpResponseData> UpdateTodosList([HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "todolists/{id}")]
             HttpRequestData req,
             int id,
             FunctionContext functionContext)
         {
             logger.LogInformation("Called UpdateTodosList");
 
+            var todoList = await req.ReadFromJsonAsync<TodoList>();
             var request = new UpdateTodoListCommand
             {
                 Id = id,

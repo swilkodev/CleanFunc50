@@ -61,17 +61,16 @@ namespace FunctionApp
         [Function(nameof(CreateTodoItem))]
         public async Task<HttpResponseData> CreateTodoItem([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "todolists/{id}/items")]
             HttpRequestData req,
-            TodoList todoList,
             int id,
             FunctionContext functionContext)
         {
             logger.LogInformation("Called CreateTodoItems");
 
+            var todoList = await req.ReadFromJsonAsync<TodoList>();
             var command = new CreateTodoItemCommand
             {
                 ListId = id,
-                // TODO Complex types are not set properly by the bindings yet
-                Title = "feed dog"//todoList.Title
+                Title = todoList.Title
             };
 
             return await this.processor.ExecuteAsync<CreateTodoItemCommand, int>(functionContext,
